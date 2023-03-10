@@ -79,5 +79,26 @@ public class RedisTests {
         operations.increment();
         operations.increment();
         System.out.println(operations.get());
+
     }
+
+    // 统计20万个重复数据的独立总数
+    @Test
+    public void testHyperLogLog() {
+        String redisKey = "test:h11:01";
+
+        for (int i = 1; i <=  100000; i++) {
+            redisTemplate.opsForHyperLogLog().add(redisKey, i);
+        }
+
+        for (int i = 1; i <=  100000; i++) {
+            int r = (int) (Math.random() * 100000 +1);
+            redisTemplate.opsForHyperLogLog().add(redisKey, r);
+        }
+
+        long size = redisTemplate.opsForHyperLogLog().size(redisKey);
+        System.out.println(size);
+    }
+
+
 }

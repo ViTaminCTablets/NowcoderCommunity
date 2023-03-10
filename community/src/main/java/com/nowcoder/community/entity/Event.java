@@ -1,7 +1,6 @@
 package com.nowcoder.community.entity;
 
-import com.alibaba.fastjson2.function.impl.ToShort;
-import com.alibaba.fastjson2.function.impl.ToString;
+
 
 import java.util.HashMap;
 import java.util.Map;
